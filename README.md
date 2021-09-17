@@ -1,1 +1,3 @@
-A React component to upload image to ipfaand wait for image to load patiently
+# LAZY IPFS IMAGE UPLOAD COMPONENT
+
+A React component to upload image to IPFS via NFT.storage api and wait for image to load patiently.

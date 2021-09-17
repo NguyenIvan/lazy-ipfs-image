@@ -60,12 +60,6 @@ const LazyIpfsImage = (props) => {
             const cid = await storage.storeBlob(new Blob([file]))
             const status = await storage.status(cid)
 
-            // TODO: for testing only
-            // const cid = "bafkreif7tz3idqj2psg7mft2oz7hgjcuzhi4ivad5zlczw2n76j636hr3i"
-            // console.log({ cid })
-            // const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-            // await sleep (2*1000)
-
             setFile(null)
 
             const ipfsUri = `${ipfsPrefix}/${cid}`
