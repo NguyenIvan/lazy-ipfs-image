@@ -1,3 +1,1 @@
-# demo-component
-
-Article can be found: <https://medium.com/@leonfeng/how-to-publish-a-react-component-library-c89a07566770>
+A React component to upload image to ipfaand wait for image to load patiently

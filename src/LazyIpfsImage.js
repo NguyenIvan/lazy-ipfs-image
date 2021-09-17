@@ -6,7 +6,9 @@ import React, { useEffect, useState, useReducer } from 'react'
 import { NFTStorage } from 'nft.storage'
 import { defaultReducer } from './defaultReducer'
 
-const LazyIpfsImage = ({endpoint, token, ipfspath}) => {
+const LazyIpfsImage = (props) => {
+
+    const { endpoint, token, ipfspath, setIpfsUri } = props
 
     if (!endpoint || !token) {
         throw new Error("Please pass nft.storage endpoint and token to LazyIpfsImage component.")
@@ -68,6 +70,14 @@ const LazyIpfsImage = ({endpoint, token, ipfspath}) => {
 
             const ipfsUri = `${ipfsPrefix}/${cid}`
             setIpfs(ipfsUri)
+            
+            if (setIpfsUri) {
+                console.log("SET URI")
+                setIpfsUri(ipfsUri) // parent call back
+            } else {
+                console.log("NOT SET")
+            }
+
             dispatch({ type: "INFO", message: `Upload success at ${ipfsUri}` })
             doFetch(ipfsUri)
 
@@ -120,8 +130,11 @@ const LazyIpfsImage = ({endpoint, token, ipfspath}) => {
                     </div>
                 }
             </div>
-            <input id="file_input" type="file" onChange={(e) => onFileChange(e)} />
-            <div className="btn btn-bg rounded" onClick={e => uploadArtwork(e)}>Upload Artwork</div>
+            <label className="btn upload__btn btn-bg rounded">
+                <input id="file_input" type="file" onChange={(e) => onFileChange(e)} />
+                1. Choose File
+            </label>
+            <div className="btn upload__btn btn-bg rounded" onClick={e => uploadArtwork(e)}>2. Upload Artwork</div>
             {state.message && (
                 <div className="upload_message">
                     {!state.error ? <span>✅</span> : <span>❌</span>}

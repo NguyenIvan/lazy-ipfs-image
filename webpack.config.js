@@ -1,6 +1,5 @@
 const path = require('path');
 const pkg = require('./package.json');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
 mode: "development",
